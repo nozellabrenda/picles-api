@@ -1,8 +1,9 @@
 import { IUseCase } from "src/domain/iusecase.interface";
-import CreatePetUseCaseInput from "./create.pet.usecase.input";
-import CreatePetUseCaseOutput from "./create.pet.usecase.output";
+import CreatePetUseCaseInput from "./dtos/create.pet.usecase.input";
+import CreatePetUseCaseOutput from "./dtos/create.pet.usecase.output";
 import { Inject, Injectable } from "@nestjs/common";
-import IPetRepository from "../interface/pet.repository.interface";
+import IPetRepository from "../interfaces/pet.repository.interface";
+import PetTokens from "../pet.tokens";
 
 @Injectable()
 export default class CreatePetUseCase implements IUseCase<CreatePetUseCaseInput, CreatePetUseCaseOutput>{
