@@ -5,6 +5,7 @@ import { Inject, Injectable } from "@nestjs/common";
 import PetTokens from "../pet.tokens";
 import IPetRepository from "../interfaces/pet.repository.interface";
 import { Pet } from "../schemas/pet.schema";
+import PetNotFoundError from "src/domain/errors/pet.not.found.error";
 import AppTokens from "src/app.tokens";
 import IFileService from "src/interfaces/file.service.interface";
 
@@ -23,7 +24,7 @@ export default class GetPetByIdUseCase implements IUseCase<GetPetByIdUseCaseInpu
         const pet = await this.getPetById(input.id)
 
         if (pet === null) {
-            throw new Error('Pet Não Encontrado')
+            throw new PetNotFoundError()
         }
 
         const petPhoto = !!pet.photo ? (await this.fileService.readFile(pet.photo)).toString('base64') : null;
