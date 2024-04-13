@@ -9,7 +9,7 @@ export default class PetResponse {
   bio: string;
   photo: string;
   createdAt: Date;
-  updateAt: Date;
+  updatedAt: Date;
 
   static fromPet(data: Pet): PetResponse {
     return new PetResponse({
